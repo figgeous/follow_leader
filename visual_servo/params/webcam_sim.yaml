@@ -1,0 +1,19 @@
+# params/webcam_sim.yaml
+visual_servo_node:
+  ros__parameters:
+    image_source:    webcam
+    image_topic:     /image_raw
+    controller:      sim
+    wrench_topic:    /bluerov2_1/wrench
+    tag_size:        0.10
+    processing_rate: 2.0
+    camera_params:  [1000.0, 1000.0, 640.0, 360.0]  # focal length x, focal length y, principal point x, principal point y 
+    # Control gains
+    forward_force:   5.0
+    lateral_force:   0.0
+    vertical_force:  0.0
+    yaw_torque:      5.0
+    # Control limits
+    max_linear_force:    5.0
+    max_angular_torque:  5.0
+    target_distance:     2.0 

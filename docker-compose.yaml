@@ -1,0 +1,49 @@
+services:
+  ros2_simulator:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - DISTRO=jazzy
+        - USERNAME=ros
+        - USER_UID=1000
+        - USER_GID=1000
+        - WORKSPACE=ros2_ws
+
+    container_name: ros2_simulator
+    # Interactive shell
+    stdin_open: true
+    tty: true
+    
+    # Environment variables
+    environment:
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1
+      - XAUTHORITY=/tmp/.docker.xauth
+      - ROS_DOMAIN_ID=0
+      - RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+      - RCUTILS_COLORIZED_OUTPUT=1
+      - GZ_VERSION=harmonic
+      
+    # Privileged mode for accessing host devices
+    privileged: true
+    
+    # Volumes
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - ~/.bash_history:/home/ros/.bash_history
+      - /home/figgeous/ros2_ws:/home/ros/ros2_ws:consistent
+      - /dev/input:/dev/input
+      - /dev/dri:/dev/dri
+      
+    # Network
+    network_mode: "host"
+      
+    # Command
+    command: >
+      bash -c "
+        source /opt/ros/jazzy/setup.bash &&
+        cd /home/ros/ros2_ws &&
+        echo 'Docker environment loaded' &&
+        bash
+      " 

@@ -1,0 +1,23 @@
+# params/real.yaml
+visual_servo_node:
+  ros__parameters:
+    image_source:    robot
+    image_topic:     /image_raw
+    controller:      mavros
+    wrench_topic:    ''
+    tag_size:        0.10
+    processing_rate: 2.0
+    camera_params:  [1000.0, 1000.0, 640.0, 360.0]
+    # Control gains
+    forward_force:   5.0
+    lateral_force:   0.0
+    vertical_force:  0.0
+    yaw_torque:      5.0
+    # Control limits
+    max_linear_force:    5.0
+    max_angular_torque:  5.0
+    target_distance:     2.0
+
+mavros_node:
+  ros__parameters:
+    fcu_url: udp://0.0.0.0:14551@
