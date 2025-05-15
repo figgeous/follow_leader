@@ -25,21 +25,14 @@ just build_workspace
 ```bash
 # Basic simulation
 just start_simulation
-
-# With debug mode and sliders
-just start_simulation
-
-# Headless mode (no GUI)
-just start_simulation
-
-# Start random movement of leader ROV
-just 
 ```
 
 ### Start ROV control
 
 3. Start the visual_servo:
-`just start_visual_servo robot_robot`
+```bash
+just start_visual_servo robot_robot
+```
 
 
 ## Available Commands
@@ -63,6 +56,7 @@ just
 - Docker Engine
 - X11 (for GUI support)
 - Git
+- Just (command runner)
 
 ## System Requirements
 
