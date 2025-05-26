@@ -32,7 +32,7 @@ services:
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
       - ~/.bash_history:/home/ros/.bash_history
-      - /home/figgeous/ros2_ws:/home/ros/ros2_ws:consistent
+      - ..:/home/ros/ros2_ws:consistent
       - /dev/input:/dev/input
       - /dev/dri:/dev/dri
       
